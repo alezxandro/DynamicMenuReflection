@@ -1,10 +1,21 @@
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
         Class<?> targetClass = DynamicMethod.class;
         Method[] methods = targetClass.getDeclaredMethods();
+
+        Arrays.sort(methods, (m1, m2) -> {
+            MenuOption menuOption1 = m1.getAnnotation(MenuOption.class);
+            MenuOption menuOption2 = m2.getAnnotation(MenuOption.class);
+            
+            if (menuOption1 != null && menuOption2 != null) {
+                return Integer.compare(menuOption1.id(), menuOption2.id());
+            }
+            return 0;
+        });
 
         for (Method method : methods) {
             if (method.isAnnotationPresent(MenuOption.class)) {
