@@ -1,0 +1,91 @@
+= Dynamic Menu in Java
+
+Java project demonstrating the implementation of a dynamic menu using reflection.
+
+== Description
+
+This project provides an example of implementing a dynamic menu in Java using reflection. It allows users to select options from the menu, associating each option with a specific method through annotations.
+
+== Usage
+
+1. Clone the repository or download the source code.
+
+2. Open the project in your preferred IDE.
+
+3. Run the `Main.java` file to see the dynamic menu in action.
+
+== Project Structure
+
+- `MenuHandler.java`: Contains the main logic for handling the menu.
+- `MenuOption.java`: Defines the `@MenuOption` annotation used to annotate menu methods.
+- Other files: Contain methods annotated with `@MenuOption` for various menu options.
+
+== Running the Program
+
+To execute the program:
+
+1. Open the `MenuHandler.java` file in your IDE.
+
+2. Run the `MenuHandler` class as the main class.
+
+3. Follow the instructions displayed in the terminal to interact with the menu.
+
+
+== Creating Your Own Dynamic Menu
+
+You can create your own dynamic menu by following these steps:
+
+1. Define a class containing methods representing the various menu options.
+
+2. Annotate each method you want to include in the menu with the `@MenuOption` annotation.
+
+Example:
+
+[source,java]
+----
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface MenuOption {
+    String name();
+    int id(); //if you want to sort the menu options
+}
+----
+
+3. Retrieve the annotated methods from the class and use them to construct the menu dynamically.
+
+Example:
+
+[source,java]
+----
+// Retrieve methods from the class and construct the menu
+Class<?> yourClass = YourClassContainingMenuMethods.class;
+Method[] methods = yourClass.getDeclaredMethods();
+
+for (Method method : methods) {
+    if (method.isAnnotationPresent(MenuOption.class)) {
+        MenuOption menuOption = method.getAnnotation(MenuOption.class);
+        String optionName = menuOption.name();
+        // Display the option name and associate it with the method
+        // Implement logic to handle user selection and method invocation
+    }
+}
+----
+
+4. Customize the menu behavior based on user selection by invoking the respective methods associated with the chosen options.
+
+This approach allows you to create dynamic menus by utilizing annotated methods within a class, providing flexibility in menu construction based on your specific requirements.
+
+== Notes
+
+- Ensure you have the JDK installed correctly before running the code.
+- Customize the menu by adding new options or methods in the `DynamicMenu` or related classes.
+
+
+== Contributions
+
+If you have suggestions, improvements, or fixes, feel free to open a pull request or an issue in the repository.
