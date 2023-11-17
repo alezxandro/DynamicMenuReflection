@@ -16,7 +16,7 @@ This project provides an example of implementing a dynamic menu in Java using re
 
 == Project Structure
 
-- `MenuHandler.java`: Contains the main logic for handling the menu.
+- `DynamicMenu.java`: Contains the main logic for handling the menu.
 - `MenuOption.java`: Defines the `@MenuOption` annotation used to annotate menu methods.
 - Other files: Contain methods annotated with `@MenuOption` for various menu options.
 
