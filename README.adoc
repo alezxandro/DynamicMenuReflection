@@ -48,11 +48,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+//Ensure to include the following annotations to the @MenuOption annotations:
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface MenuOption {
     String name();
-    int id(); //if you want to sort the menu options
+    int id(); //if you want to sort the menu options, since that Class<?>.getDeclaredMethods() returns an array with methods ordered randomly
 }
 ----
 
