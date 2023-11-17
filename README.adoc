@@ -24,9 +24,9 @@ This project provides an example of implementing a dynamic menu in Java using re
 
 To execute the program:
 
-1. Open the `MenuHandler.java` file in your IDE.
+1. Open the project in your IDE.
 
-2. Run the `MenuHandler` class as the main class.
+2. Run the `Main` class as the main class.
 
 3. Follow the instructions displayed in the terminal to interact with the menu.
 
